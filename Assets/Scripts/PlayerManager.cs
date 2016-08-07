@@ -4,13 +4,8 @@ using System.Collections;
 public class PlayerManager : MonoBehaviour {
 
     [SerializeField]
-    private int _health, _gold;
+    private int _gold;
 
-    public int Health
-    {
-        get { return _health; }
-        set { _health = value;}
-    }
     public int Gold
     {
         get { return _gold; }
@@ -18,7 +13,6 @@ public class PlayerManager : MonoBehaviour {
     }
 
     void Start () {
-        _health = 10;
         _gold = 0;
 	}
 }
