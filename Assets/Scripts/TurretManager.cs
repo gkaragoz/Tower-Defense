@@ -13,7 +13,7 @@ public class TurretManager : MonoBehaviour {
 	private BulletController _bullet;		//Turret's bullet.
 	private GameObject _bulletPrefab;
 	private GameObject _targetEnemy;		//Enemy which is inside of range.
-	private List<GameObject> _entryList;	//Enemies list which is inside of range.
+	private List<GameObject> _entryList = new List<GameObject>();	//Enemies list which is inside of range.
 	private GameManager _GM;
 	private CircleCollider2D _collider;
 
@@ -29,14 +29,13 @@ public class TurretManager : MonoBehaviour {
 		_bulletSpeed = 10f;
 		_bulletPrefab = Resources.Load ("Bullet") as GameObject;
 		_GM = GameObject.Find ("GM").GetComponent<GameManager>();
-		_collider = GetComponent<CircleCollider2D> ();
+		_collider = gameObject.AddComponent<CircleCollider2D> ();
+        _collider.isTrigger = true;
 		_collider.radius = _range;
-		_entryList = new List<GameObject> ();
 	}
 
 	void Update ()
 	{
-			
 		if (_entryList.Count > 0) {
 			_targetEnemy = _entryList [0];
 			if (!_targetEnemy.GetComponent<EnemyManager> ().isDeath ()) {
