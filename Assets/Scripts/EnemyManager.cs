@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour {
     public float _speed;
 
 	void Start () {
-        _path = GameObject.FindGameObjectsWithTag("Path").Reverse().ToList();
+        _path = GameObject.FindGameObjectsWithTag("Path").OrderBy(a => a.name).ToList();
         _pathIndex = 0;
         _target = _path[_pathIndex].transform;
         _player = GameObject.Find("GM").GetComponent<PlayerManager>();
