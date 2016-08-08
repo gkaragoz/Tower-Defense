@@ -19,7 +19,7 @@ public class PathGizmo : MonoBehaviour {
             if (i > 0 && i < transform.childCount && prevChild != null)
             {
                 Gizmos.DrawLine(prevChild.position, child.position);
-                Debug.Log("Drawing");
+                //Debug.Log("Drawing");
             }
             i++;
             prevChild = child;
