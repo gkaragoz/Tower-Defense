@@ -26,17 +26,21 @@ public class EnemyGenerator : MonoBehaviour {
 
 	void Spawn()
 	{
-		_spawnCountControl++;
-		if (_enemyCount < _spawnCountControl) 
-		{
-			CancelInvoke ("Spawn");
-		}
-		else
-		{
-			GameObject enemy = Instantiate (_enemyPrefab, _spawnLocation, Quaternion.identity)as GameObject;
-			enemy.transform.SetParent (GameObject.Find ("Enemies").transform);
-			enemy.name = "Enemy_" + _spawnCountControl;
-			_GM.enemyList.Add (enemy);
-		}
+        if (_GM.onPlay)
+        {
+		    _spawnCountControl++;
+		    if (_enemyCount < _spawnCountControl) 
+		    {
+			    CancelInvoke ("Spawn");
+		    }
+		    else
+		    {
+			    GameObject enemy = Instantiate (_enemyPrefab, _spawnLocation, Quaternion.identity)as GameObject;
+			    enemy.transform.SetParent (GameObject.Find ("Enemies").transform);
+			    enemy.name = "Enemy_" + _spawnCountControl;
+			    _GM.enemyList.Add (enemy);
+		    }
+        }
+
 	}
 }

@@ -5,16 +5,24 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    public GameObject mainMenu;
-    public GameObject levelSelect;
+    private GameObject mainMenu;
+    private GameObject levelSelect;
 
-    public Button btn_LevelSelect;
-    public Button btn_BackMainMenu;
+    private Button btn_LevelSelect;
+    private Button btn_BackMainMenu;
 
-    public Button btn_Level01;
+    private Button btn_Level01;
 
 	void Start () {
         DontDestroyOnLoad(gameObject);
+
+        mainMenu = GameObject.Find("Canvas/Panel/MainMenu");
+        levelSelect = GameObject.Find("Canvas/Panel/LevelSelect");
+
+        btn_LevelSelect = mainMenu.transform.Find("btn_LevelSelect").GetComponent<Button>();
+        btn_BackMainMenu = levelSelect.transform.Find("btn_BackMainMenu").GetComponent<Button>();
+        btn_Level01 = levelSelect.transform.Find("btn_Level01").GetComponent<Button>();
+
         btn_LevelSelect.onClick.AddListener(delegate
         {
             OpenLevelSelectMenu();

@@ -72,7 +72,9 @@
     <Compile Include="Assets\Scripts\BaseManager.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\EnemyGenerator.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\FixHealthBarRotation.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PathGizmo.cs" />
     <Compile Include="Assets\Scripts\PlaceTurret.cs" />

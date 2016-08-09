@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour {
     private int _pathIndex;				//Counter of which point on now.
     private Transform _target;			//Enemy's next movement point.
 	private int _health;
-	//    private PlayerManager _player;
+	private GameManager _GM;
 	public int Health
 	{
 		get { return _health; }
@@ -26,14 +26,17 @@ public class EnemyManager : MonoBehaviour {
         _pathIndex = 0;
 		//First point set.
         _target = _path[_pathIndex].transform;
-//        _player = GameObject.Find("GM").GetComponent<PlayerManager>();
+        _GM = GameObject.Find("GM").GetComponent<GameManager>();
 		_health=10;
 	}
 
 	void Update () {
-        Move();
-		if (isDeath())
-			Destroy (gameObject);
+        if (_GM.onPlay)
+        {
+            Move();
+		    if (isDeath())
+			    Destroy (gameObject);
+        }
 	}
 
     void Move ()

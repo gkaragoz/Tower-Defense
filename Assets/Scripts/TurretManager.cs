@@ -36,23 +36,25 @@ public class TurretManager : MonoBehaviour {
 
 	void Update ()
 	{
-		if (_entryList.Count > 0) {
-			_targetEnemy = _entryList [0];
-			if (!_targetEnemy.GetComponent<EnemyManager> ().isDeath ()) {
-				Look (_targetEnemy.transform.position);
-				if (_currentTime >= _attackSpeed) {
-					Fire ();
-					_currentTime = 0;
-				}
-			} else {
-				_entryList.Remove (_targetEnemy);
-				_targetEnemy = null;
-			}
-		} else {
-			_targetEnemy = null;
-		}
-		_currentTime += Time.deltaTime;
-
+        if (_GM.onPlay)
+        {
+		    if (_entryList.Count > 0) {
+			    _targetEnemy = _entryList [0];
+			    if (!_targetEnemy.GetComponent<EnemyManager> ().isDeath ()) {
+				    Look (_targetEnemy.transform.position);
+				    if (_currentTime >= _attackSpeed) {
+					    Fire ();
+					    _currentTime = 0;
+				    }
+			    } else {
+				    _entryList.Remove (_targetEnemy);
+				    _targetEnemy = null;
+			    }
+		    } else {
+			    _targetEnemy = null;
+		    }
+		    _currentTime += Time.deltaTime;
+        }
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {

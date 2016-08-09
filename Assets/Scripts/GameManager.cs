@@ -4,14 +4,13 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+    public bool onPlay = false;
 	public List<GameObject> enemyList;		//Enemies list on scene.
 
-	// Use this for initialization
 	void Start () {
 	
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
