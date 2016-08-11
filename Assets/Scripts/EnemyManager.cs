@@ -12,11 +12,12 @@ public class EnemyManager : MonoBehaviour {
 	public int Health
 	{
 		get { return _health; }
-		set { _health = value; }
+		set { _health = value;
+            if (isDeath())
+                Destroy();
+        }
 	}
-
-
-
+    
     public float _speed;				//Enemy movement speed.
 
 	void Start () {
@@ -32,11 +33,7 @@ public class EnemyManager : MonoBehaviour {
 
 	void Update () {
         if (_GM.onPlay)
-        {
             Move();
-		    if (isDeath())
-			    Destroy (gameObject);
-        }
 	}
 
     void Move ()
@@ -63,5 +60,10 @@ public class EnemyManager : MonoBehaviour {
 			return false;
 	}
 
-
+    public void Destroy()
+    {
+        _GM.enemyList.RemoveAt(_GM.enemyList.IndexOf(gameObject));
+        Destroy(gameObject);
+        _GM.enemyCount--;
+    }
 }

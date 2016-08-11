@@ -40,16 +40,24 @@ public class TurretManager : MonoBehaviour {
         {
 		    if (_entryList.Count > 0) {
 			    _targetEnemy = _entryList [0];
-			    if (!_targetEnemy.GetComponent<EnemyManager> ().isDeath ()) {
-				    Look (_targetEnemy.transform.position);
-				    if (_currentTime >= _attackSpeed) {
-					    Fire ();
-					    _currentTime = 0;
-				    }
-			    } else {
-				    _entryList.Remove (_targetEnemy);
-				    _targetEnemy = null;
-			    }
+                if (_targetEnemy != null)
+                {
+			        if (!_targetEnemy.GetComponent<EnemyManager> ().isDeath ()) {
+				        Look (_targetEnemy.transform.position);
+				        if (_currentTime >= _attackSpeed) {
+					        Fire ();
+					        _currentTime = 0;
+				        }
+			        } else {
+				        _entryList.Remove (_targetEnemy);
+				        _targetEnemy = null;
+			        }
+                }
+                else
+                {
+                    _entryList.Remove(_targetEnemy);
+                    _targetEnemy = null;
+                }
 		    } else {
 			    _targetEnemy = null;
 		    }

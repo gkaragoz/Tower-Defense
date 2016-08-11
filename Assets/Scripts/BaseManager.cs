@@ -38,8 +38,7 @@ public class BaseManager : MonoBehaviour {
         if (other.gameObject.tag == "Enemy")
         {
 			Health--;
-			other.gameObject.SetActive(false);
-			_GM.enemyList.RemoveAt (_GM.enemyList.IndexOf(other.gameObject));
+            other.GetComponent<EnemyManager>().Destroy();
 		}
     }
 
