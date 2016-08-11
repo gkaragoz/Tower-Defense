@@ -1,0 +1,14 @@
+{
+  "Level1": {
+    "Wave1": {
+      "EnemyCount": 5,
+      "SpawnTime": 1.5,
+      "SpawnWaitTime": 0.5
+    },
+    "Wave2": {
+      "EnemyCount": 3,
+      "SpawnTime": 1.0,
+      "SpawnWaitTime": 0.8
+    }
+  }
+}

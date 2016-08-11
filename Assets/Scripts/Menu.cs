@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour {
+public class Menu : MonoBehaviour {
 
     private GameObject mainMenu;
     private GameObject levelSelect;
@@ -14,8 +14,6 @@ public class UIManager : MonoBehaviour {
     private Button btn_Level01;
 
 	void Start () {
-        DontDestroyOnLoad(gameObject);
-
         mainMenu = GameObject.Find("Canvas/Panel/MainMenu");
         levelSelect = GameObject.Find("Canvas/Panel/LevelSelect");
 

@@ -18,11 +18,14 @@ public class EnemyGenerator : MonoBehaviour {
 		_enemyPrefab = Resources.Load ("Enemy")as GameObject;
 	}
 
-    public void SpawnInvokeRepeater(int enemyCount, float spawnTime, float spawnWaitTime)
+    public void SpawnInvokeRepeater(JSONObject wavesJSON)
     {
-        _enemyCount = enemyCount;
-        _spawnTime = spawnTime;
-        _spawnWaitTime = spawnWaitTime;
+        Debug.Log("Comes wave is: " + wavesJSON);
+        _spawnCountControl = 0;
+        _enemyCount = int.Parse(wavesJSON.GetField("EnemyCount").ToString());
+        _spawnTime = float.Parse(wavesJSON.GetField("SpawnTime").ToString());
+        _spawnWaitTime = float.Parse(wavesJSON.GetField("SpawnWaitTime").ToString());
+        _GM = GetComponent<GameManager>();
         _GM.enemyCount = _enemyCount;
         InvokeRepeating("Spawn", _spawnWaitTime, _spawnTime);
     }
@@ -35,6 +38,7 @@ public class EnemyGenerator : MonoBehaviour {
 		    if (_enemyCount < _spawnCountControl) 
 		    {
 			    CancelInvoke ("Spawn");
+                Destroy(this);
 		    }
 		    else
 		    {
